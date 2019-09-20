@@ -109,7 +109,7 @@ Payir Gateway is a composer library to help working with pay.ir payment gateway.
      $description  = $verifyResponse->description;
      $message      = $verifyResponse->message;
      */
-      if(DB::getInstance()->exists('orders', ['trans_id' => $verifyResponse->transId])){
+      if(DB::getInstance()->exists('orders', ['trans_id' => $verifyResponse->transId]) == false){
           // SELL YOUR STUFF HERE
       }else{
           echo 'ERR: Security reason';
