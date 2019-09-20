@@ -1,0 +1,35 @@
+{
+  "name": "omidgfx/payir-gateway",
+  "description": "Makes your (pay.ir) payments easy and implements reliable interfaces for payment gateway.",
+  "type": "library",
+  "keywords": [
+    "gateway",
+    "pay.ir",
+    "payment-gateway",
+    "plugin",
+    "pejman chatrrouz",
+    "omidgfx"
+  ],
+  "homepage": "https://github.com/omidgfx/payir-gateway",
+  "authors": [
+    {
+      "name": "Pejman Chatrrouz",
+      "email": "omid.quist@gmail.com",
+      "homepage": "http://omidgfx.com",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "stable",
+  "license": "LGPL-2.1-only",
+  "require": {
+    "php": ">=5.6",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Omidgfx\\": "src/Omidgfx"
+    }
+  }
+}
