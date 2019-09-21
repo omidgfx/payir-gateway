@@ -126,6 +126,6 @@ Payir Gateway is a composer library to help working with pay.ir payment gateway.
 ---
 Created with ❤ by [Pejman Chatrrouz (Omidgfx)](https://github.com/omidgfx)
 
-## 👉 🎁 [Donate me](https://me.pay.ir/omidgfx)
+### 🎁 [Donate me](https://me.pay.ir/omidgfx)
 
 [Email](mailto:info@omidgfx.com) | [Facebook](https://fb.com/omidgfx)
