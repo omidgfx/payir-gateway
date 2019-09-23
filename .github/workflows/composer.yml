@@ -1,0 +1,2 @@
+- name: Composer Action
+  uses: MilesChou/composer-action@v0.0.1
