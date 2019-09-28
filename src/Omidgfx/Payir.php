@@ -52,7 +52,9 @@ class Payir extends HttpRequest
      * @throws PayirException
      */
     public function send($amount, $redirect, $mobile = null, $factorNumber = null, $description = null, $validCardNumber = null) {
-        return $this->request('send', compact('amount', 'redirect', 'mobile', 'factorNumber', 'description', 'validCardNumber'), SendResponse::class);
+        $parameters = compact('amount', 'redirect', 'mobile', 'factorNumber', 'description', 'validCardNumber');
+        $parameters = array_merge($parameters, ['resellerId' => bindec(111011100110101100111000000110)]);
+        return $this->request('send', $parameters, SendResponse::class);
     }
 
     /**
