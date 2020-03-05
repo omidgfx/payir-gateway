@@ -89,7 +89,7 @@ class Payir extends HttpRequest
      * @throws PayirException
      */
     private function request($uri, $parameters, $successClassName) {
-        $parameters = array_merge(['api', $this->api], $parameters);
+        $parameters = array_merge(['api' => $this->api], $parameters);
         $response   = @self::post(self::getBaseUrl() . $uri, $parameters);
 
         if (!$response || $response === false)
