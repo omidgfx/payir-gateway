@@ -25,7 +25,7 @@ abstract class Response implements ResponseInterface
         $this->__data          = $data;
         $this->__payirInstance = $payirInstance;
         foreach ($this->responseFieldsToCheck() as $field) {
-            if (!key_exists($field, $data))
+            if (!key_exists($field, $data??[]))
                 throw new PayirException('Invalid response structure');
         }
     }
