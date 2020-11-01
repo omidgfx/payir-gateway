@@ -31,8 +31,9 @@ abstract class Language
         $uri    = $uri === 'send' ? 'send' : 'verify';
         $errors = $this->{$uri . '_errors'}();
 
-        if (key_exists($code, $errors))
+        if (array_key_exists($code, $errors)) {
             return $errors[$code];
+        }
 
         return $this->{$uri . '_unknown_error'};
     }
