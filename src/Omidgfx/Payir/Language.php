@@ -28,7 +28,7 @@ abstract class Language
      * @return mixed
      */
     public function translate($code, $uri) {
-        $uri    = $uri == 'send' ? 'send' : 'verify';
+        $uri    = $uri === 'send' ? 'send' : 'verify';
         $errors = $this->{$uri . '_errors'}();
 
         if (key_exists($code, $errors))

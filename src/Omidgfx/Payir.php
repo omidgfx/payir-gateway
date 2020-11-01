@@ -36,7 +36,7 @@ class Payir extends HttpRequest
      */
     public function __construct($api, $language = self::LANGUAGE_FARSI) {
         $this->api      = $api;
-        $language       = $language == 'fa' ? 'fa' : 'en';
+        $language       = $language === 'fa' ? 'fa' : 'en';
         $language       = "Omidgfx\\Payir\\Languages\\$language";
         $this->language = new $language;
     }
@@ -92,17 +92,20 @@ class Payir extends HttpRequest
         $parameters = array_merge(['api' => $this->api], $parameters);
         $response   = @self::post(self::getBaseUrl() . $uri, $parameters);
 
-        if (!$response || $response === false)
+        if (!$response || $response === false) {
             throw new PayirException('Invalid response.');
+        }
 
-        $httpCode = $response['http_status_code'];
+        $httpCode = (int)$response['http_status_code'];
         $response = $response['response'];
 
-        if ($httpCode == 200 && (isset($response['status']) && $response['status'] == 1))
+        if ($httpCode === 200 && (isset($response['status']) && (int)$response['status'] === 1)) {
             return new $successClassName($response, $this);
+        }
 
-        if ($httpCode == 422 || (isset($response['status']) && $response['status'] == 0))
+        if ($httpCode === 422 || (isset($response['status']) && (int)$response['status'] === 0)) {
             return new ErrorResponse($response, $this, $uri);
+        }
 
         throw new PayirException('Invalid response data.');
 

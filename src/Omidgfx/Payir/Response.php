@@ -25,8 +25,9 @@ abstract class Response implements ResponseInterface
         $this->__data          = $data;
         $this->__payirInstance = $payirInstance;
         foreach ($this->responseFieldsToCheck() as $field) {
-            if (!key_exists($field, $data))
+            if (!array_key_exists($field, $data)) {
                 throw new PayirException('Invalid response structure');
+            }
         }
     }
 
@@ -36,6 +37,10 @@ abstract class Response implements ResponseInterface
 
     public function __set($name, $value) {
         $this->__data[$name] = $value;
+    }
+
+    public function __isset($name) {
+        return !array_key_exists($name, $this->__data);
     }
 
     /**

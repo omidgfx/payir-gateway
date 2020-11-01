@@ -27,7 +27,7 @@ class CallbackListener
     public function __construct(Payir $payir) {
         $this->onError =
         $this->onSuccess =
-        $this->onException = function () { };
+        $this->onException = static function () { };
         $this->payir   = $payir;
     }
 
@@ -99,14 +99,9 @@ class CallbackListener
     #endregion
 
     public function listen() {
-        $this->token =
-            $this->token
-                ? $this->token
-                : (
-            !empty($_GET['token'])
-                ? $_GET['token']
-                : null
-            );
+        if (!$this->token) {
+            $this->token = !empty($_GET['token']) ? $_GET['token'] : null;
+        }
 
         if (!$this->token) {
             $fn = $this->{'onException'};
