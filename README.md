@@ -8,6 +8,10 @@ Payir Gateway is a composer library to help working with pay.ir payment gateway.
 * Reliable
 * Easy-to-use
 
+## Tutorial
+#### [▷ Watch tutorial video in aparat](https://www.aparat.com/v/vBHIQ)
+
+
 ## Basic scenario
 
  For a healthy payment, first of all you need to send the order information to pay.ir and get a token and store it in your database (uniquely), then pass your client to an address that's involved with the token you just got. The client pays and passes back to your website again.
