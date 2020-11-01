@@ -108,6 +108,5 @@ class Payir extends HttpRequest
         }
 
         throw new PayirException('Invalid response data.');
-
     }
 }
