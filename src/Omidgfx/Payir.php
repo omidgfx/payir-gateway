@@ -92,18 +92,19 @@ class Payir extends HttpRequest
         $parameters = array_merge(['api' => $this->api], $parameters);
         $response   = @self::post(self::getBaseUrl() . $uri, $parameters);
 
-        if (!$response || $response === false) {
+        if (!$response || $response === false || !isset($response['http_status_code'], $response['response'], $response['status'])) {
             throw new PayirException('Invalid response.');
         }
 
         $httpCode = (int)$response['http_status_code'];
         $response = $response['response'];
+        $status   = (int)$response['status'];
 
-        if ($httpCode === 200 && (isset($response['status']) && (int)$response['status'] === 1)) {
+        if ($httpCode === 200 && $status === 1) {
             return new $successClassName($response, $this);
         }
 
-        if ($httpCode === 422 || (isset($response['status']) && (int)$response['status'] === 0)) {
+        if ($httpCode !== 200 && $status === 0) {
             return new ErrorResponse($response, $this, $uri);
         }
 

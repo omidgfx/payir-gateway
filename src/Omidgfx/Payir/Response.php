@@ -22,9 +22,13 @@ abstract class Response implements ResponseInterface
      * @throws PayirException
      */
     public function __construct($data, $payirInstance) {
+        if (!$data || !is_array($data)) {
+            throw new PayirException('Invalid response structure');
+        }
         $this->__data          = $data;
         $this->__payirInstance = $payirInstance;
-        foreach ($this->responseFieldsToCheck() as $field) {
+        $fields                = $this->responseFieldsToCheck();
+        foreach ($fields as $field) {
             if (!array_key_exists($field, $data)) {
                 throw new PayirException('Invalid response structure');
             }
