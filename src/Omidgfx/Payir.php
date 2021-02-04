@@ -92,7 +92,7 @@ class Payir extends HttpRequest
         $parameters = array_merge(['api' => $this->api], $parameters);
         $response   = @self::post(self::getBaseUrl() . $uri, $parameters);
 
-        if (!$response || $response === false || !isset($response['http_status_code'], $response['response'], $response['status'])) {
+        if (!$response || $response === false || !isset($response['http_status_code'], $response['response']['status'])) {
             throw new PayirException('Invalid response.');
         }
 
